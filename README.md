@@ -12,15 +12,21 @@ Download and extract the project into an already extracted copy of the AppJS dis
 
 The following files are overwritten from the Hello World app sample that is included in the distributable package:
 
-`data/app.js`
+```
+data/app.js
+```
 
 The main configuration file for the AppJS initial window and application
 
-`data/content/index.html` 
+```
+data/content/index.html
+```
 
 The main index file that is loaded into the initial window in AppJS. This includes the main HTML for the custom window.
 
-`data/content/style.css` 
+```
+data/content/style.css
+``` 
 
 The main stylesheet for `index.html`. It includes styling for native scrollbars, custom window chrome in 8 different OS configurations. Add the different OS classes from this stylesheet to the `.app` `<div>` to change the window appearance.
 
@@ -28,11 +34,15 @@ The main stylesheet for `index.html`. It includes styling for native scrollbars,
 
 And the following files are added:
 
-`data/content/js/window.js`
+```
+data/content/js/window.js
+```
 
 Contains basic controls for the custom chrome window. Uses jQuery for the time being, but may be refactored into plain JavaScript at some point.
 
-`data/content/libs/jquery.js`
+```
+data/content/libs/jquery.js
+```
 
 jQuery 1.8.2 minified. Required for the window controls to function. For the jQuery license, see [jquery.org/license](http://jquery.org/license).
 
