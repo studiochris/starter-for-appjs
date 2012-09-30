@@ -8,7 +8,7 @@ Instructions and Contents
 
 Download and extract the project into an already extracted copy of the AppJS distributable package for the platform of your choice. 
 
-The following files are overwritten from the Hello World app sample that is distributed in the distributable package:
+The following files are overwritten from the Hello World app sample that is included in the distributable package:
 
 `data/app.js`
 
