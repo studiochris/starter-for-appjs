@@ -37,7 +37,9 @@ MIT License
 ---------------------------
 
 Copyright © 2012 studio|chris and other contributors.
+
 [studiochris.us](http://www.studiochris.us)
+
 [github.com/studiochris/starter-for-appjs](https://github.com/studiochris/starter-for-appjs)
 
 Permission is hereby granted, free of charge, to any person obtaining
