@@ -1,0 +1,191 @@
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-button:start:decrement { display: block; width: 5px; height: 5px; background-color: transparent; border-left: 1px solid rgba(0,0,0,.1); }
+::-webkit-scrollbar-button:end:increment { display: block; width: 5px; height: 5px; background-color: transparent; border-left: 1px solid rgba(0,0,0,.1);}
+::-webkit-scrollbar-track{border-left: 1px solid rgba(0,0,0,.1); background: transparent; padding-left: 1px;}
+::-webkit-scrollbar-track:enabled { background-color: transparent; }
+::-webkit-scrollbar-track-piece { background-color: transparent; border: none; margin: 0; } 
+::-webkit-scrollbar-thumb:window-inactive{}
+::-webkit-scrollbar-thumb{-webkit-border-radius: 5px; border: 1px solid #222; background: rgba(0,0,0,.3);}
+::-webkit-scrollbar-thumb:vertical { height: 30px;}
+::-webkit-scrollbar-thumb:horizontal { width: 30px;}
+
+html{height: 100%; box-sizing: border-box;}
+body{height: 100%; padding: 17px 20px 23px; box-sizing: border-box; background: transparent; margin: 0; padding: 0;}
+body.maximized, body.fullscreen{padding: 0;}
+
+/*Utility Classes*/
+ul.inline, ul.inline li{display: inline-block; margin: 0; padding: 0; list-style: none;}
+
+/*App Window*/
+.app{display: block; position: relative; height: 100%; width: 100%; box-sizing: border-box; border-radius: 9px; box-shadow: 0 4px 20px rgba(0,0,0,.5);}
+.maximized .app, .fullscreen .app{border-radius: 0 !important; padding: 0 !important;}
+.title-bar{display: block; position: relative; height: 42px; width: 100%; box-sizing: border-box; background: #333; border-radius: 8px 8px 0 0; border: 1px solid #222; -webkit-user-select: none; user-select: none;}
+.maximized .title-bar, .fullscreen .title-bar{border-radius: 0 !important;}
+.app-content{display: block; position: absolute; top: 42px; bottom: 22px; left: 0; right: 0; width: 100%; overflow: hidden; box-sizing: border-box; background: #666; border: 1px solid #222; border-width: 0 1px; -webkit-user-select: none; user-select: none;}
+.status-bar{display: block; position: relative; position: absolute; bottom: 0; left: 0; height: 22px; width: 100%; box-sizing: border-box; background: #333; border-radius: 0 0 8px 8px; border: 1px solid #222;}
+.maximized .status-bar, .fullscreen .title-bar{border-radius: 0 !important;}
+
+/*Title Bar*/
+.title-drag{position: absolute; top: 0; left: 0; bottom: 0; right: 0; z-index: 2;}
+
+.app-title{display: block; position: absolute; top: 0; left: 0; width: 100%; line-height: 40px; box-sizing: border-box; color: #999; text-align: left; padding-left: 11px; z-index: 1;}
+.app-title .text{pointer-events: none;}
+.app-icon{display: inline-block; position: relative; top: 5px; left: -3px; background: #666; height: 24px; width: 24px; border-radius: 50%; z-index: 3;}
+
+/*Window Controls*/
+.window-controls{position: absolute; right: 8px; top: -1px; z-index: 10;}
+.window-controls .button{display: inline-block; height: 24px; width: 24px; border: 1px solid #222; overflow: hidden; text-indent: 100%; text-wrap: none; background: #666; cursor: default;}
+.window-controls .minimize-button:hover{background: #09F;}
+.window-controls .maximize-button:hover{background: #09F;}
+.window-controls .close-button:hover{background: #C00;}
+
+.fullscreen-button-container{display: none; height: 32px; width: 32px; position: absolute; top: 4px; right: 4px; z-index: 100;}
+.fullscreen-button{display: block; height: 32px; width: 32px; background: #666; text-indent: 100%; overflow: hidden;white-space: nowrap; border-radius: 2px;}
+
+/*Platform Specific Window Controls & Adjustments*/
+
+/*WINDOWS*/
+.windows .window-controls{}
+.windows .window-controls li{position: relative; float: left; margin-left: -1px;}
+.windows .window-controls .button{height: 17px; width: 27px;}
+.windows .window-controls li:first-child .button{border-radius: 0 0 0 5px;}
+.windows .window-controls li:last-child .button{border-radius: 0 0 5px 0;}
+.windows .window-controls li:only-child .button{border-radius: 0 0 5px 5px;}
+.windows .window-controls .minimize-button{width: 27px;}
+.windows .window-controls .minimize-button:hover{background: #09F;}
+.windows .window-controls .maximize-button{width: 28px}
+.windows .window-controls .maximize-button:hover{background: #09F;}
+.windows .window-controls .close-button{width: 46px;}
+.windows .window-controls .close-button:hover{background: #C00;}
+
+.windows.xp .app-title{font-weight: bold;}
+.windows.xp .app-icon{top: 6px;}
+
+.windows.xp .window-controls{right: 5px; top: 6px; width: auto;}
+.windows.xp .window-controls ul{display: inline-block;}
+.windows.xp .window-controls li{position: relative; float: left; margin-right: 2px;}
+.windows.xp .window-controls .button{width: 24px; height: 24px; border-radius: 3px;}
+.windows.xp .window-controls li:first-child .button{border-radius: 4px;}
+.windows.xp .window-controls li:last-child .button{border-radius: 4px;}
+.windows.xp .window-controls li:only-child .button{border-radius: 4px;}
+.windows.xp .window-controls .minimize-button{background: #666;}
+.windows.xp .window-controls .minimize-button:hover{background: #09F;}
+.windows.xp .window-controls .maximize-button{background: #666;}
+.windows.xp .window-controls .maximize-button:hover{background: #09F;}
+.windows.xp .window-controls .close-button{background: #da2020;}
+.windows.xp .window-controls .close-button:hover{background: #f34747;}
+
+.windows.eight .app-title{text-align: center; padding-left: 0; }
+.windows.eight .app-icon{position: absolute; top: 7px; left: 8px; }
+
+.windows.eight .app{border-radius: 0; box-shadow: 0 0 3px 0 rgba(0,0,0,.75);}
+.windows.eight .title-bar{border-radius: 0;}
+.windows.eight .status-bar{border-radius: 0;}
+.windows.eight .window-controls{top: 0; right: 6px;}
+.windows.eight .window-controls li{position: relative; float: left; margin-right: 0;}
+.windows.eight .window-controls li:first-child .button{border-radius: 0;}
+.windows.eight .window-controls li:last-child .button{border-radius: 0;}
+.windows.eight .window-controls li:only-child .button{border-radius: 0;}
+.windows.eight .window-controls .button{border-radius: 0; border: none; height: 20px; width: 28px;}
+.windows.eight .window-controls .minimize-button{ background: transparent;}
+.windows.eight .window-controls .minimize-button:hover{background: #09F;}
+.windows.eight .window-controls .maximize-button{background: transparent;}
+.windows.eight .window-controls .maximize-button:hover{background: #09F;}
+.windows.eight .window-controls .close-button{width: 45px; background: #c75050;}
+.windows.eight .window-controls .close-button:hover{background: #C00;}
+
+/*MAC OS*/
+.macosx .app{border-radius: 7px;}
+.macosx .title-bar{border-radius: 6px 6px 0 0;}
+.macosx .status-bar{border-radius: 0 0 6px 6px;}
+
+.macosx .app-title{text-align: center; padding-left: 0;}
+
+.macosx .fullscreen-button-container{display: block;}
+
+.macosx .window-controls{left: 10px; top: 10px; width: 63px;}
+.macosx .window-controls ul{display: -webkit-flex;}
+.macosx .window-controls li{position: relative; margin-right: 3px; display: -webkit-flex; -webkit-flex-direction: row; -webkit-order: 3;}
+.macosx .window-controls li:first-child{-webkit-order: 2;}
+.macosx .window-controls li:last-child{-webkit-order: 1;}
+.macosx .window-controls .button{width: 16px; height: 16px; border-radius: 50%;}
+.macosx .window-controls .minimize-button{background: #f6bc58;}
+.macosx .window-controls .minimize-button:hover{background: #ffe85d;}
+.macosx .window-controls .maximize-button{background: #88d259;}
+.macosx .window-controls .maximize-button:hover{background: #bde872;}
+.macosx .window-controls .close-button{background: #f82627;}
+.macosx .window-controls .close-button:hover{background: #ff7a83;}
+
+.macosx.lion .window-controls{left: 10px; top: 12px;}
+.macosx.lion .window-controls li{margin-right: 6px;}
+.macosx.lion .window-controls .button{width: 12px; height: 12px;}
+.macosx.lion .window-controls .minimize-button{background: #f7cd69;}
+.macosx.lion .window-controls .minimize-button:hover{background: #ffe8aa;}
+.macosx.lion .window-controls .maximize-button{background: #8fd170;}
+.macosx.lion .window-controls .maximize-button:hover{background: #c3faa7;}
+.macosx.lion .window-controls .close-button{background: #ee4f53;}
+.macosx.lion .window-controls .close-button:hover{background: #fc8e8d;}
+
+/*LINUX*/
+.linux .fullscreen-button-container{display: none;}
+.linux .app-title{font-weight: bold;}
+
+.linux .window-controls{right: 8px; top: 4px; border-radius: 15px; padding: 2px; width: 50px; box-shadow: 0 3px 12px -6px rgba(0, 0, 0, .98) inset;}
+.linux .window-controls ul{display: inline-block;}
+.linux .window-controls li{position: relative; float: left; margin-right: 1px;}
+.linux .window-controls li:first-child{}
+.linux .window-controls li:last-child{margin-right: 0;}
+.linux .window-controls .button{width: 16px; height: 16px; border-radius: 50%; border-color: transparent; border-width: 0;}
+.linux .window-controls .minimize-button{background: #666;}
+.linux .window-controls .minimize-button:hover{background: #AAA;}
+.linux .window-controls .maximize-button{background: #666;}
+.linux .window-controls .maximize-button:hover{background: #AAA;}
+.linux .window-controls .close-button{background: #df520e;}
+.linux .window-controls .close-button:hover{background: #ed7241;}
+
+.linux.classic .window-controls{right: 5px; top: 5px; width: auto; box-shadow: none;}
+.linux.classic .window-controls ul{display: inline-block;}
+.linux.classic .window-controls li{position: relative; float: left; margin-right: 2px;}
+.linux.classic .window-controls li:first-child{}
+.linux.classic .window-controls li:last-child{margin-right: 0;}
+.linux.classic .window-controls .button{width: 28px; height: 24px; border-radius: 3px;}
+.linux.classic .window-controls .minimize-button{background: #666;}
+.linux.classic .window-controls .minimize-button:hover{background: #AAA;}
+.linux.classic .window-controls .maximize-button{background: #666;}
+.linux.classic .window-controls .maximize-button:hover{background: #AAA;}
+.linux.classic .window-controls .close-button{background: #df520e;}
+.linux.classic .window-controls .close-button:hover{background: #ed7241;}
+
+.linux.unity .app-title{padding-left: 74px;}
+.linux.unity .app-icon{display: none;}
+
+.linux.unity .window-controls{left: 8px;}
+.linux.unity .window-controls ul{display: -webkit-flex;}
+.linux.unity .window-controls li{position: relative; margin-right: 0; display: -webkit-flex; -webkit-flex-direction: row; -webkit-order: 3;}
+.linux.unity .window-controls li:first-child{-webkit-order: 2; margin-right: 1px;}
+.linux.unity .window-controls li:last-child{-webkit-order: 1; margin-right: 1px;}
+.linux.unity .window-controls .button{width: 16px; height: 16px; border-radius: 50%; border-color: transparent; border-width: 0;}
+.linux.unity .window-controls .minimize-button{background: #666;}
+.linux.unity .window-controls .minimize-button:hover{background: #AAA;}
+.linux.unity .window-controls .maximize-button{background: #666;}
+.linux.unity .window-controls .maximize-button:hover{background: #AAA;}
+.linux.unity .window-controls .close-button{background: #df520e;}
+.linux.unity .window-controls .close-button:hover{background: #ed7241;}
+
+/*App Content Styles*/
+body{font-family: sans-serif; font-size: 16px; color: #DDD;}
+h1{margin: 0; padding: 18px 24px 24px; font-size: 26px; -webkit-user-select: none; user-select: none; pointer-events: none;}
+h3{margin: 0; padding: 0 0 12px 0; font-size: 20px; font-weight: normal; -webkit-user-select: none; user-select: none; pointer-events: none}
+
+.container{margin: 0 24px;}
+.column{display: inline-block; margin-right: 24px; position: relative; width: 178px; vertical-align: top;}
+.column:last-child{margin-right: 0;}
+
+.button-list, .button-list li{display: block; margin: 0; padding: 0; list-style: none;}
+.button-list li{margin-bottom: 6px;}
+.button-list .button{display: block; border: 1px solid #222; color: #222; background: #999; border-radius: 4px; padding: 12px 0; text-decoration: none; text-align: center; -webkit-user-select: none; user-select: none;}
+.button-list .button:hover, .button-list .button:focus, .button-list .active .button:hover, .button-list .active .button:focus{background: #AAA; color: #333;}
+.button-list .button:active, .button-list .active .button:active{background: #FFF; color: #333;}
+.button-list .active .button{background: #CCC; color: #333;}
+.button-list .active .button:hover, .button-list .active .button:focus{background: #EEE; color: #333;}
+.button-list .active .button:active{background: #FFF; color: #333;}

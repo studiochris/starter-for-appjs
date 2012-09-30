@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Starter for AppJS</title>
+<link rel="stylesheet" href="style.css">
+<script src="libs/jquery.js"></script>
+<script>
+$(function(){
+	
+//Sample App Controls - Remove and replace with your own app's JavaScript
+$('.button-list .button').on('click', function(event){changeWindowStyle(event, $(this))});
+
+var changeWindowStyle = function(event, element){
+	event.preventDefault();
+	var button = $(element);
+	var newClasses = button.attr('href').replace('#', '').split('-').join(' ');
+	
+	$(document.body).removeClass('windows xp eight macosx lion linux unity classic').addClass(newClasses);	
+	$('.button-list li').removeClass('active');
+	button.parent().addClass('active');
+	
+	//Fullscreen from the title bar button is Mac OS only...
+	if(!$(document.body).hasClass('macosx') && window.frame.state == "fullscreen"){
+		$(document.body).removeClass('fullscreen');
+		window.frame.restore();
+	}
+}	
+
+});
+</script>
+</head>
+
+<body class="windows xp">
+
+<div class="app">
+	<div class="title-bar">
+		<!-- Title Bar Elements go here... -->
+		<div class="title-drag"></div>
+		<div class="app-title">
+			<span class="app-icon"></span><!--.app-icon-->
+			<span class="text"></span>
+		</div><!--.app-title-->
+		<span class="button-container window-controls">
+			<ul class="inline">
+				<li><a class="button minimize-button" href="#minimize-app">Minimize</a></li>
+				<li><a class="button maximize-button" href="#maximize-app">Maximize</a></li>
+				<li><a class="button close-button" href="#close-app">Close</a></li>
+			</ul>
+		</span><!--.window-controls-->
+		<span class="button-container fullscreen-button-container"><a class="button fullscreen-button" href="#fullscreen-app">Full Screen</a></span>
+	</div><!--.title-bar-->
+	<div class="app-content">
+		<!-- App content goes here... -->
+		<h1>Change Window Style</h1>
+		<div class="container">
+		<div class="column">
+		<h3>Windows</h3>
+			<ul class="button-list">
+				<li class="active"><a class="button" href="#windows-xp">Windows XP</a></li>
+				<li><a class="button" href="#windows">Windows Vista &amp; 7</a></li>
+				<li><a class="button" href="#windows-eight">Windows 8</a></li>
+			</ul>
+		</div>
+		
+		<div class="column">
+		<h3>Mac OS X</h3>
+			<ul class="button-list">
+				<li><a class="button" href="#macosx">Mac OS X</a></li>
+				<li><a class="button" href="#macosx-lion">Mac OS X Lion+</a></li>
+			</ul>
+		</div>
+		
+		<div class="column">
+		<h3>Linux</h3>
+			<ul class="button-list">
+				<li><a class="button" href="#linux-unity">Ubuntu Unity</a></li>
+				<li><a class="button" href="#linux">Ubuntu Classic</a></li>
+				<li><a class="button" href="#linux-classic">Linux Classic</a></li>
+			</ul>
+		</div>
+		</div>
+	</div><!--.app-body-->
+	<div class="status-bar">
+		<!-- Status Bar elements are here... -->
+	</div><!--.status-bar-->
+</div><!--.app-->
+
+<!--Additional JavaScript for the Project-->
+
+<!--Main JavaScript for the Custom Window controls-->
+<script src="js/window.js"></script>
+</body>
+</html>
