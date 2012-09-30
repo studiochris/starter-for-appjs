@@ -8,6 +8,8 @@ Instructions and Contents
 
 Download and extract the project into an already extracted copy of the AppJS distributable package for the platform of your choice. 
 
+### Files Replaced
+
 The following files are overwritten from the Hello World app sample that is included in the distributable package:
 
 `data/app.js`
@@ -21,6 +23,8 @@ The main index file that is loaded into the initial window in AppJS. This includ
 `data/content/style.css` 
 
 The main stylesheet for `index.html`. It includes styling for native scrollbars, custom window chrome in 8 different OS configurations. Add the different OS classes from this stylesheet to the `.app` `<div>` to change the window appearance.
+
+### Files Added
 
 And the following files are added:
 
