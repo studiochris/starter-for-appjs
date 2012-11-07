@@ -1,11 +1,16 @@
-var app = module.exports = require('appjs');
-
-app.serveFilesFrom(__dirname + '/content');
-
+//packaged application compatability code
+if (typeof iconsDir == "undefined") {
+	//temporary fix for packaged application compatability
+	var iconsDir = __dirname + '/content/icons';
+}
+if (typeof app == "undefined") {
+	var app = require('appjs');
+	app.serveFilesFrom(__dirname + '/content');
+}
 var window = app.createWindow({
   width  : 680,
   height : 384,
-  icons  : __dirname + '/content/icons',
+  icons  : iconsDir,
   showChrome : false,
   alpha: true,
   autoResize: false,
