@@ -189,3 +189,7 @@ h3{margin: 0; padding: 0 0 12px 0; font-size: 20px; font-weight: normal; -webkit
 .button-list .active .button{background: #CCC; color: #333;}
 .button-list .active .button:hover, .button-list .active .button:focus{background: #EEE; color: #333;}
 .button-list .active .button:active{background: #FFF; color: #333;}
+
+.status-bar a {
+	color: #DDD;
+}
