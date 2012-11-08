@@ -8,8 +8,8 @@ if (typeof app == "undefined") {
 	app.serveFilesFrom(__dirname + '/content');
 }
 var window = app.createWindow({
-  width  : 680,
-  height : 384,
+  width  : 640,
+  height : 368,
   icons  : iconsDir,
   showChrome : false,
   alpha: true,

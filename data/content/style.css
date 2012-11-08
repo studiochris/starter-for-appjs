@@ -10,19 +10,19 @@
 ::-webkit-scrollbar-thumb:horizontal { width: 30px;}
 
 html{height: 100%; box-sizing: border-box;}
-body{height: 100%; padding: 17px 20px 23px; box-sizing: border-box; background: transparent; margin: 0; padding: 0;}
+body{height: 100%; box-sizing: border-box; background: transparent; margin: 0; padding: 0;}
 body.maximized, body.fullscreen{padding: 0;}
 
 /*Utility Classes*/
 ul.inline, ul.inline li{display: inline-block; margin: 0; padding: 0; list-style: none;}
 
 /*App Window*/
-.app{display: block; position: relative; height: 100%; width: 100%; box-sizing: border-box; border-radius: 9px; box-shadow: 0 4px 20px rgba(0,0,0,.5);}
+.app{display: block; position: relative; height: 100%; width: 100%; box-sizing: border-box; border-radius: 9px;}
 .maximized .app, .fullscreen .app{border-radius: 0 !important; padding: 0 !important;}
 .title-bar{display: block; position: relative; height: 42px; width: 100%; box-sizing: border-box; background: #333; border-radius: 8px 8px 0 0; border: 1px solid #222; -webkit-user-select: none; user-select: none;}
 .maximized .title-bar, .fullscreen .title-bar{border-radius: 0 !important;}
-.app-content{display: block; position: absolute; top: 42px; bottom: 22px; left: 0; right: 0; width: 100%; overflow: hidden; box-sizing: border-box; background: #666; border: 1px solid #222; border-width: 0 1px; -webkit-user-select: none; user-select: none;}
-.status-bar{display: block; position: relative; position: absolute; bottom: 0; left: 0; height: 22px; width: 100%; box-sizing: border-box; background: #333; border-radius: 0 0 8px 8px; border: 1px solid #222;}
+.app-content{display: block; position: absolute; top: 42px; bottom: 44px; left: 0; right: 0; width: 100%; overflow: hidden; box-sizing: border-box; background: #666; border: 1px solid #222; border-width: 0 1px; -webkit-user-select: none; user-select: none;}
+.status-bar{display: block; position: relative; position: absolute; bottom: 0; left: 0; padding: 8px; width: 100%; box-sizing: border-box; background: #333; border-radius: 0 0 8px 8px; border: 1px solid #222;}
 .maximized .status-bar, .fullscreen .title-bar{border-radius: 0 !important;}
 
 /*Title Bar*/
@@ -78,7 +78,7 @@ ul.inline, ul.inline li{display: inline-block; margin: 0; padding: 0; list-style
 .windows.eight .app-title{text-align: center; padding-left: 0; }
 .windows.eight .app-icon{position: absolute; top: 7px; left: 8px; }
 
-.windows.eight .app{border-radius: 0; box-shadow: 0 0 3px 0 rgba(0,0,0,.75);}
+.windows.eight .app{border-radius: 0;}
 .windows.eight .title-bar{border-radius: 0;}
 .windows.eight .status-bar{border-radius: 0;}
 .windows.eight .window-controls{top: 0; right: 6px;}
@@ -129,6 +129,7 @@ ul.inline, ul.inline li{display: inline-block; margin: 0; padding: 0; list-style
 /*LINUX*/
 .linux .fullscreen-button-container{display: none;}
 .linux .app-title{font-weight: bold;}
+.linux .app-icon{top: 6px;}
 
 .linux .window-controls{right: 8px; top: 4px; border-radius: 15px; padding: 2px; width: 50px; box-shadow: 0 3px 12px -6px rgba(0, 0, 0, .98) inset;}
 .linux .window-controls ul{display: inline-block;}
@@ -190,6 +191,11 @@ h3{margin: 0; padding: 0 0 12px 0; font-size: 20px; font-weight: normal; -webkit
 .button-list .active .button:hover, .button-list .active .button:focus{background: #EEE; color: #333;}
 .button-list .active .button:active{background: #FFF; color: #333;}
 
-.status-bar a {
-	color: #DDD;
-}
+/*Status Bar Buttons & Links*/
+.status-bar a{color: #999; text-decoration: none; font-size: 14px; line-height: 26px;}
+.status-bar a:hover{color: #DDD;}
+.status-bar a:active{color: #FFF;}
+
+.status-bar .button{line-height: normal; padding: 4px 8px; border: 1px solid #222; background: #666; color: #DDD; border-radius: 4px; float: right;}
+.status-bar .button:hover{background: #09F; color: #FFF;}
+.status-bar .button:active{background: #FFF; color: #333;}

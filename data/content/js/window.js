@@ -36,6 +36,7 @@ var fullscreenWindow = function(event){
 $('.app-title .text').text(document.title);
 
 //Moves the window when dragging the custom title bar
+//Windows & Mac OS support ONLY
 $('.title-drag').on('mousedown', function(event){window.frame.drag();});
 
 
